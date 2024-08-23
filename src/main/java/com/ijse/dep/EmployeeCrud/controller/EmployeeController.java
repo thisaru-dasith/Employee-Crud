@@ -42,4 +42,14 @@ public class EmployeeController {
         Employee dbEmployee = employeeService.save(theEmployee);
         return dbEmployee;
     }
+
+    @DeleteMapping("/employees/{theId}")
+    public void deleteEmployee(@PathVariable int theId){
+        Employee employee = employeeService.findById(theId);
+        if (employee != null){
+            throw new RuntimeException("the is not employee with this number" + theId);
+        }
+
+        employeeService.deleteById(theId);
+    }
 }
