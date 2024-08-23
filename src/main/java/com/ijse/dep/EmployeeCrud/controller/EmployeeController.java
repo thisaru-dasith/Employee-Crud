@@ -3,10 +3,7 @@ package com.ijse.dep.EmployeeCrud.controller;
 import com.ijse.dep.EmployeeCrud.enity.Employee;
 import com.ijse.dep.EmployeeCrud.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,5 +26,20 @@ public class EmployeeController {
     @GetMapping("/employees/{id}")
     public Employee getEmployeeById(@PathVariable int id){
         return employeeService.findById(id);
+    }
+
+    @PostMapping("/employees")
+    public Employee saveEmployee(@RequestBody Employee theEmployee){
+        //just in case if they pass an id
+        theEmployee.setId(0);
+
+        Employee dbEmployee = employeeService.save(theEmployee);
+        return dbEmployee;
+    }
+
+    @PutMapping("/employees")
+    public Employee updateEmpoyee(@RequestBody Employee theEmployee){
+        Employee dbEmployee = employeeService.save(theEmployee);
+        return dbEmployee;
     }
 }
