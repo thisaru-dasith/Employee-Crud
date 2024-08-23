@@ -1,4 +1,4 @@
-package com.ijse.dep.EmployeeCrud.DAO;
+package com.ijse.dep.EmployeeCrud.enity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
