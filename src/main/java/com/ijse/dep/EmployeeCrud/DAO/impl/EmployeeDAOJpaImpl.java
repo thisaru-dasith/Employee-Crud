@@ -30,4 +30,11 @@ public class EmployeeDAOJpaImpl implements EmployeeDAO {
         return employees;
 
     }
+
+    @Override
+    public Employee findById(int id) {
+        Employee employee = entityManger.find(Employee.class, id);
+        return employee;
+    }
+
 }
